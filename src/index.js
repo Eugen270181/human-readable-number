@@ -8,18 +8,18 @@ module.exports = function toReadable (number) {
     let div = Math.floor(i/10);
     let mov = i%10;
     let index = div*10;
-    console.log(Arr[i]);
-    Arr[i] = Arr[index] + (mov>0)?(" "+Arr[mov]):"";
-    console.log(Arr[i]);
+    //console.log(Arr[i]);
+    Arr[i] = (mov>0)?(Arr[index] + " " + Arr[mov]):Arr[i];
+    //console.log(Arr[i]);
     // console.log(`${Arr[div*10]}+${Arr[mov]}`);
 
   }
   //////////////////////////////////////////////
   if (number>999) return 0;
-  if (number<=99) {console.log(Arr[number]);return Arr[number];}
+  if (number<=99) return Arr[number];
   let result, rest, hundred;
   hundred = Math.floor(number/100);
   result = Arr[hundred] + " hundred";
   rest = number%100;
-  return result + (rest>0)?(` ${Arr[rest]}`):('');
+  return `${result}${rest>0?(' '+Arr[rest]):''}`;
 }
